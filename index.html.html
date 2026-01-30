@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kopi Kenangan Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5dc; /* Light cream color */
+      color: #6d4c41;  /* Darker brown for text */
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #3e2723; /* Dark coffee color */
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+    .chart-container {
+      width: 45%;
+      margin: 20px 0;
+    }
+    .footer {
+      background-color: #3e2723;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Kopi Kenangan - Sales Dashboard</h1>
+</header>
+
+<div class="container">
+  <!-- Bar Chart for Coffee Sales -->
+  <div class="chart-container">
+    <canvas id="coffeeSalesChart"></canvas>
+  </div>
+  
+  <!-- Pie Chart for Coffee Preferences -->
+  <div class="chart-container">
+    <canvas id="coffeePreferencesChart"></canvas>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Dashboard © Kopi Kenangan</p>
+</div>
+
+<script>
+  // Coffee Sales Bar Chart
+  const ctx1 = document.getElementById('coffeeSalesChart').getContext('2d');
+  const coffeeSalesChart = new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['Kopi Susu', 'Kopi Hitam', 'Kopi Matcha', 'Kopi Latte', 'Kopi Mocha'],
+      datasets: [{
+        label: 'Sales by Coffee Type',
+        data: [200, 350, 150, 120, 180],
+        backgroundColor: '#d0a1a0',  // Soft coffee color
+        borderColor: '#3e2723',  // Dark coffee color
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  // Coffee Preferences Pie Chart
+  const ctx2 = document.getElementById('coffeePreferencesChart').getContext('2d');
+  const coffeePreferencesChart = new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ['Kopi Susu', 'Kopi Hitam', 'Kopi Matcha', 'Kopi Latte'],
+      datasets: [{
+        label: 'Coffee Preference',
+        data: [50, 30, 10, 10],
+        backgroundColor: ['#6d4c41', '#3e2723', '#9e9d24', '#ff5722'],
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+</script>
+
+</body>
+</html>
